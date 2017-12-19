@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>随机颜色，大小，位置</title>
+	<link rel="stylesheet" href="index.css">
+</head>
+<style>
+	.circle{
+		width: 200px;
+		height: 200px;
+		border-radius: 50%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		transition: all .5s linear;
+	}
+	.circle:hover{
+		width: 200px!important;
+		height: 200px!important;
+	}
+</style>
+<body>
+	
+</body>
+</html>
+<script>
+	window.onload = function(){
+		 for(let i = 0;i < 50;i++){
+			 //创建一个元素
+			 let divs = document.createElement('div');
+	 		 divs.className = 'circle';
+			 //设置随机大小   30-100
+			 let widths = Math.floor(Math.random()*70+30);
+	 
+	         //设置随机颜色
+			 function bg(){
+				 let r = Math.floor(Math.random()*255);
+				 let g = Math.floor(Math.random()*255);
+				 let b = Math.floor(Math.random()*255);
+				 return `rgb(${r},${g},${b})`;
+			 }
+	 
+			 //设置随机位置
+			 let lefts = Math.floor(Math.random()*(innerWidth - 100));
+			 let tops = Math.floor(Math.random()*(innerHeight - 100));
+
+
+			 divs.style.cssText = `width:${widths}px;height:${widths}px;left:${lefts}px;top:${tops}px;background:${bg()}`;
+			 document.body.appendChild(divs);
+			 console.log(divs);
+
+		 }
+	}
+</script>
